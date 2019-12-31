@@ -5,6 +5,8 @@ FileUtils.cd("..")
 
 puts "Enter directory name:"
 directory_name = gets.chomp
+puts "Enter a class name: "
+class_name = gets.chomp
 
 FileUtils.mkdir(directory_name)
 FileUtils.cd(directory_name)
@@ -22,9 +24,7 @@ FileUtils.touch("Gemfile")
 FileUtils.touch("README.md")
 
 ruby_temp = File.open('lib/ruby_temp.rb', 'w')
-puts "Enter a class name: "
-class_name = gets.chomp
-ruby_temp.puts "class " + class_name +
+ruby_temp.puts "class " + class_name.capitalize +
 "\n" + "  attr_accessor" +
 "\n" +
 "\n" + "  def initialize()" +
@@ -73,18 +73,18 @@ ruby_temp_spec.puts "require 'rspec'" +
 "\n" + "require 'ruby_temp'" +
 "\n" + "require 'pry'" +
 "\n" +
-"\n" + "describe '#" + class_name + "' do" +
+"\n" + "describe '#" + class_name.capitalize + "' do" +
 "\n" +
 "\n" + "  describe('') do" +
 "\n" + "    it("") do" +
-"\n" + "      expect(" + class_name + ".).to(eq())" +
+"\n" + "      expect(" + class_name.capitalize + ".).to(eq())" +
 "\n" + "    end" +
 "\n" + "  end" +
 "\n" +
 "\n" + "end"
 
 readme = File.open('README.md', 'w')
-readme.puts "# Title" +
+readme.puts "#" + directory_name +
 "\n" + "## By: Lela Smith" +
 "\n" +
 "\n" + "### Description" +
