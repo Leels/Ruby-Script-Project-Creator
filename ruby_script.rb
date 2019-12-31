@@ -6,7 +6,7 @@ FileUtils.cd("..")
 puts "Enter directory name:"
 directory_name = gets.chomp
 puts "Enter a class name: "
-class_name = gets.chomp
+class_name = (gets.chomp).downcase
 
 FileUtils.mkdir(directory_name)
 FileUtils.cd(directory_name)
@@ -14,8 +14,8 @@ FileUtils.mkdir("lib")
 FileUtils.mkdir("spec")
 FileUtils.mkdir("views")
 FileUtils.mkdir("public")
-FileUtils.touch("lib/ruby_temp.rb")
-FileUtils.touch("spec/ruby_temp_spec.rb")
+FileUtils.touch("lib/" + class_name + ".rb")
+FileUtils.touch("spec/" + class_name + "_spec.rb")
 FileUtils.touch("views/layout.erb")
 FileUtils.touch("public/styles.css")
 FileUtils.touch("app.rb")
@@ -23,7 +23,7 @@ FileUtils.touch("config.ru")
 FileUtils.touch("Gemfile")
 FileUtils.touch("README.md")
 
-ruby_temp = File.open('lib/ruby_temp.rb', 'w')
+ruby_temp = File.open("lib/" + class_name + ".rb", 'w')
 ruby_temp.puts "class " + class_name.capitalize +
 "\n" + "  attr_accessor" +
 "\n" +
@@ -67,7 +67,7 @@ layout.puts "<!DOCTYPE html>" +
 "\n" + "</body>" +
 "\n" + "</html>"
 
-ruby_temp_spec = File.open('spec/ruby_temp_spec.rb', 'w')
+ruby_temp_spec = File.open("spec/" + class_name + "_spec.rb", 'w')
 ruby_temp_spec.puts "require 'rspec'" +
 "\n" + "require 'definition'" +
 "\n" + "require 'ruby_temp'" +
